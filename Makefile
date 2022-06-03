@@ -11,7 +11,7 @@ LIBS :=
 
 hello: $(TRG)
 
-$(TRG): src/main.cc
+$(TRG): src/main.cc Makefile
 
 define comp =
 	@echo "Compiling: $< -> $@"
@@ -33,6 +33,7 @@ endef
 $(TRG): $(OBJ)
 	$(link)
 
+
 .PHONY: clean
 clean:
 	@rm -rf tmp
@@ -45,7 +46,7 @@ print:
 	@echo "DEP: $(DEP)"
 	@echo "TRG: $(TRG)"
 
-	ldd $(TRG)
-	ls -alh --color $(TRG)
+	@test -s $(TRG) && ldd $(TRG) || true
+	@test -s $(TRG) && ls -alh --color $(TRG) || true
 
 -include $(DEP)
