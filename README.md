@@ -37,6 +37,8 @@ What about a task list:
 ## Build
 We can build and execute specific targets as follows:
 
-```make
-   make clean
-   make print```
+```
+make
+make clean
+make print
+```
